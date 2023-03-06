@@ -1,0 +1,5 @@
+name: seed
+in: query
+description: A random string that can be used to reproduce the same results.
+schema:
+  type: string

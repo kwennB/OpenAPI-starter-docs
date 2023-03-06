@@ -1,0 +1,11 @@
+type: object
+description: The user's registration information.
+properties:
+  date:
+    type: string
+    description: The user's registration date (ISO 8601 format).
+    example: '2012-01-21T09:47:29.956Z'
+  age:
+    type: integer
+    description: The user's registration age.
+    example: 9

@@ -1,0 +1,5 @@
+name: gender
+in: query
+description: The gender of the user to retrieve. Use 'male' or 'female'.
+schema:
+  type: string

@@ -1,0 +1,5 @@
+name: results
+in: query
+description: The number of results to return. Must be an integer between 1 and 100.
+schema:
+  type: integer

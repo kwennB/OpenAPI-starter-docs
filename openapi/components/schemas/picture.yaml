@@ -1,0 +1,15 @@
+type: object
+description: The picture of the user.
+properties:
+  large:
+    type: string
+    format: url
+    example: https://randomuser.me/api/portraits/women/41.jpg
+  medium:
+    type: string
+    format: url
+    example: https://randomuser.me/api/portraits/med/women/41.jpg
+  thumbnail:
+    type: string
+    format: url
+    example: https://randomuser.me/api/portraits/thumb/women/41.jpg

@@ -1,0 +1,7 @@
+name: format
+in: query
+description: >-
+  The format of the response. Use JSON (default), PrettyJSON or pretty, CSV,
+  YAML, XML
+schema:
+  type: string

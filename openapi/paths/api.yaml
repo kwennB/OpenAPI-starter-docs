@@ -1,0 +1,45 @@
+get:
+  tags:
+    - User
+  summary: Get complete data of any user
+  description: Access any user data unique to different nationalities.
+  operationId: getUserData
+  parameters:
+    - $ref: ..\components\parameters\gender.yaml
+    - $ref: ..\components\parameters\nat.yaml
+    - $ref: ..\components\parameters\results.yaml
+    - $ref: ..\components\parameters\seed.yaml
+    - $ref: ..\components\parameters\format.yaml
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              userData:
+                type: array
+                description: Array of user objects
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: User's full name
+                    nationality:
+                      type: string
+                      description: User's nationality
+                    age:
+                      type: integer
+                      description: User's age
+                    email:
+                      type: string
+                      description: User's email address
+    '404':
+      description: User not found
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: No user found with provided parameters.

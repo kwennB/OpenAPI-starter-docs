@@ -1,0 +1,43 @@
+type: object
+description: The user's address
+properties:
+  street:
+    type: object
+    description: The user's street address
+    properties:
+      number:
+        type: integer
+        description: The street number
+        example: 3999
+      name:
+        type: string
+        description: The street name
+        example: Pasaje Frias
+  city:
+    type: string
+    description: The city name
+    example: Sinop
+  state:
+    type: string
+    description: The state name
+    example: Minnesota
+  country:
+    type: string
+    description: The country name
+    example: United States
+  postcode:
+    type: string
+    description: The postal code
+    example: '17289'
+  coordinates:
+    type: object
+    description: The user's geographic coordinates.
+    properties:
+      latitude:
+        type: string
+        description: The user's latitude.
+        example: '-53.2660'
+      longitude:
+        type: string
+        description: The user's longitude.
+        example: '90.4897'

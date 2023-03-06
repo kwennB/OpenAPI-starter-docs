@@ -1,0 +1,11 @@
+type: object
+description: The user's date of birth.
+properties:
+  date:
+    type: string
+    description: The user's date of birth (ISO 8601 format).
+    example: '1946-10-31T21:58:53.347Z'
+  age:
+    type: integer
+    description: The user's age.
+    example: 29

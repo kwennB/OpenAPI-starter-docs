@@ -1,0 +1,11 @@
+type: object
+description: The user's timezone.
+properties:
+  offset:
+    type: string
+    description: The timezone offset from UTC.
+    example: '+2:00'
+  description:
+    type: string
+    description: A description of the timezone.
+    example: Kaliningrad, South Africa

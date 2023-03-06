@@ -1,0 +1,15 @@
+type: object
+description: The user's name
+properties:
+  title:
+    type: string
+    description: The user's title
+    example: Mrs
+  first:
+    type: string
+    description: The user's first name
+    example: Jane
+  last:
+    type: string
+    description: The user's last name
+    example: Smith

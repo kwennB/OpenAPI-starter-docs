@@ -1,0 +1,7 @@
+name: nat
+in: query
+description: >-
+  The nationality of the user to retrieve. Avaliable nationalities include; AU,
+  BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IN, IR, MX, NL, NO, NZ, RS, TR, UA, US
+schema:
+  type: string

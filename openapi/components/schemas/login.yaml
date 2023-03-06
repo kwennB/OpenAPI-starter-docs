@@ -1,0 +1,23 @@
+type: object
+description: The user's login credentials.
+properties:
+  username:
+    type: string
+    description: The user's username.
+    example: crazyfrog514
+  password:
+    type: string
+    description: The user's password.
+    example: rugby
+  md5:
+    type: string
+    description: The user's MD5 hash.
+    example: ca290ca3c9833825761c2cec21c16ff2
+  sha1:
+    type: string
+    description: The user's SHA-1 hash.
+    example: 93bc9bd5c57513f483de09a60f49541eb718a7c7
+  sha256:
+    type: string
+    description: The user's SHA-256 hash.
+    example: f1f3778036dac110b162510167cd419ebc7c4e2f9b35710e3e0a28a973711b57

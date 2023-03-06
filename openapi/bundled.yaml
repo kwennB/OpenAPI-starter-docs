@@ -1,0 +1,246 @@
+openapi: 3.0.2
+info:
+  title: Random User API
+  description:  
+    $ref: description.md
+  version: '1.0'
+
+servers:
+  - url: https://randomuser.me/
+
+paths:
+  /api:
+    get:
+      tags:
+        - Endpoint
+      summary: Get complete data of any user
+      description: Access any user data unique to different nationalities.
+      operationId: getUserData
+      parameters:
+        - $ref: '#/components/parameters/gender'
+        - $ref: '#/components/parameters/nat'
+        - $ref: '#/components/parameters/results'
+        - $ref: '#/components/parameters/seed'
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userData:
+                    type: array
+                    description: Array of user objects
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: User's full name
+                        nationality:
+                          type: string
+                          description: User's nationality
+                        age:
+                          type: integer
+                          description: User's age
+                        email:
+                          type: string
+                          description: User's email address
+        '404':
+          description: User not found
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: No user found with provided parameters.
+components:
+  parameters:
+    gender:
+      name: gender
+      in: query
+      description: The gender of the user to retrieve. Use 'male' or 'female'.
+      schema:
+        type: string
+    nat:
+      name: nat
+      in: query
+      description: The nationality of the user to retrieve. Avaliable nationalities include; AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IN, IR, MX, NL, NO, NZ, RS, TR, UA, US
+      schema:
+        type: string
+    results:
+      name: results
+      in: query
+      description: The number of results to return. Must be an integer between 1 and 100.
+      schema:
+        type: integer
+    seed:
+      name: seed
+      in: query
+      description: A random string that can be used to reproduce the same results.
+      schema:
+        type: string
+    format:
+      name: format
+      in: query
+      description: The format of the response. Use JSON (default), PrettyJSON or pretty, CSV, YAML, XML
+      schema:
+        type: string
+  schemas:
+    gender:
+      type: string
+      description: The user's gender
+      example: female
+    name:
+      type: object
+      description: The user's name
+      properties:
+        title:
+          type: string
+          description: The user's title
+          example: Mrs
+        first:
+          type: string
+          description: The user's first name
+          example: Jane
+        last:
+          type: string
+          description: The user's last name
+          example: Smith
+    location:
+      type: object
+      description: The user's address
+      properties:
+        street:
+          type: object
+          description: The user's street address
+          properties:
+            number:
+              type: integer
+              description: The street number
+              example: 3999
+            name:
+              type: string
+              description: The street name
+              example: Pasaje Frias
+        city:
+          type: string
+          description: The city name
+          example: Sinop
+        state:
+          type: string
+          description: The state name
+          example: Minnesota
+        country:
+          type: string
+          description: The country name
+          example: United States
+        postcode:
+          type: string
+          description: The postal code
+          example: '17289'
+        coordinates:
+          type: object
+          description: The user's geographic coordinates.
+          properties:
+            latitude:
+              type: string
+              description: The user's latitude.
+              example: '-53.2660'
+            longitude:
+              type: string
+              description: The user's longitude.
+              example: '90.4897'
+    timezone:
+      type: object
+      description: The user's timezone.
+      properties:
+        offset:
+          type: string
+          description: The timezone offset from UTC.
+          example: '+2:00'
+        description:
+          type: string
+          description: A description of the timezone.
+          example: Kaliningrad, South Africa
+    email:
+      type: string
+      description: The user's email address
+      example: pamela.perry@example.com
+    login:
+      type: object
+      description: The user's login credentials.
+      properties:
+        username:
+          type: string
+          description: The user's username.
+          example: crazyfrog514
+        password:
+          type: string
+          description: The user's password.
+          example: rugby
+        md5:
+          type: string
+          description: The user's MD5 hash.
+          example: ca290ca3c9833825761c2cec21c16ff2
+        sha1:
+          type: string
+          description: The user's SHA-1 hash.
+          example: 93bc9bd5c57513f483de09a60f49541eb718a7c7
+        sha256:
+          type: string
+          description: The user's SHA-256 hash.
+          example: f1f3778036dac110b162510167cd419ebc7c4e2f9b35710e3e0a28a973711b57
+    dob:
+      type: object
+      description: The user's date of birth.
+      properties:
+        date:
+          type: string
+          description: The user's date of birth (ISO 8601 format).
+          example: '1946-10-31T21:58:53.347Z'
+        age:
+          type: integer
+          description: The user's age.
+          example: 29
+    registered:
+      type: object
+      description: The user's registration information.
+      properties:
+        date:
+          type: string
+          description: The user's registration date (ISO 8601 format).
+          example: '2012-01-21T09:47:29.956Z'
+        age:
+          type: integer
+          description: The user's registration age.
+          example: 9
+    phone:
+      type: string
+      description: The user's phone number.
+      example: (772) 337-3940
+    cell:
+      type: string
+      description: The user's cell phone number.
+      example: (532) 895-9807
+    picture:
+      type: object
+      description: The picture of the user.
+      properties:
+        large:
+          type: string
+          format: url
+          example: https://randomuser.me/api/portraits/women/41.jpg
+        medium:
+          type: string
+          format: url
+          example: https://randomuser.me/api/portraits/med/women/41.jpg
+        thumbnail:
+          type: string
+          format: url
+          example: https://randomuser.me/api/portraits/thumb/women/41.jpg
+    nat:
+      type: string
+      description: The nationality of a user
+      example: US

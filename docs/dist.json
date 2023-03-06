@@ -1,0 +1,150 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Random User API",
+    "description": "The Random API provides a free service to generate random user data for application testing. ",
+    "version": "2.5",
+    "termsOfService": "https://openweathermap.org/terms",
+    "contact": {
+      "name": "Random User API",
+      "url": "https://randomuser.me/",
+      "email": "some_email@gmail.com"
+    },
+    "license": {
+      "name": "CC Attribution-ShareAlike 4.0 (CC BY-SA 4.0)",
+      "url": "https://randomuser.me/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://randomuser.me/"
+    }
+  ],
+  "externalDocs": {
+    "description": "Documentation for the Random User API",
+    "url": "https://randomuser.me/documentation"
+  },
+  "paths": {
+    "/api": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get complete data of any user",
+        "description": "Access any user data unique to different nationalities.",
+        "operationId": "getUserData",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/gender"
+          },
+          {
+            "$ref": "#/components/parameters/nat"
+          },
+          {
+            "$ref": "#/components/parameters/results"
+          },
+          {
+            "$ref": "#/components/parameters/seed"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userData": {
+                      "type": "array",
+                      "description": "Array of user objects",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "User's full name"
+                          },
+                          "nationality": {
+                            "type": "string",
+                            "description": "User's nationality"
+                          },
+                          "age": {
+                            "type": "integer",
+                            "description": "User's age"
+                          },
+                          "email": {
+                            "type": "string",
+                            "description": "User's email address"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "No user found with provided parameters."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "gender": {
+        "name": "gender",
+        "in": "query",
+        "description": "The gender of the user to retrieve. Use 'male' or 'female'.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "nat": {
+        "name": "nat",
+        "in": "query",
+        "description": "The nationality of the user to retrieve. Avaliable nationalities include; AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IN, IR, MX, NL, NO, NZ, RS, TR, UA, US",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "results": {
+        "name": "results",
+        "in": "query",
+        "description": "The number of results to return. Must be an integer between 1 and 100.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "seed": {
+        "name": "seed",
+        "in": "query",
+        "description": "A random string that can be used to reproduce the same results.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "format": {
+        "name": "format",
+        "in": "query",
+        "description": "The format of the response. Use JSON (default), PrettyJSON or pretty, CSV, YAML, XML",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
